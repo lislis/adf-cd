@@ -1,0 +1,9 @@
+{
+  "name": "adf-cd",
+  "version": "1.0.0",
+  "description": "Chat-like documentation tool for groups",
+  "main": "index.js",
+  "author": "lislis",
+  "license": "MIT",
+  "private": false
+}
