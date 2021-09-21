@@ -1,18 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const Group = require('../models/Group.js');
+const Chat = require('../models/Chat.js');
 
 router.get('/', (req, res, next) => {
-  Group.find((err, rooms) => {
+  Group.find((err, groups) => {
     if (err) return next(err);
-    res.json(rooms);
+    res.json(groups);
   });
 });
 
 router.get('/:id', (req, res, next) => {
-  Group.findById(req.params.id, (err, room) => {
+  Group.findById(req.params.id, (err, group) => {
     if (err) return next(err);
-    res.json(room);
+    res.json(group);
+  });
+});
+
+router.get('/:id/chats', (req, res, next) => {
+  Promise.all([
+    Group.findById(req.params.id).exec(),
+    Chat.find({group: req.params.id}).exec()
+  ]).then(values => {
+    res.json(values)
+  }).catch(e => req.logger.error(e))
+});
+
+router.get('/name/:name', (req, res, next) => {
+  Group.find({ name: req.params.name }, (err, group) => {
+    if (err) return next(err);
+    res.json(group);
   });
 });
 
