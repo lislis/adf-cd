@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  a {
+    color: hotpink;
+  }
+}
+
+@layer utilities {
+  .bubble {
+    display: inline-block;
+    padding: 1em;
+    background-color: cornflowerblue;
+  }
+  .left {
+    text-align: left;
+  }
+  .right {
+    text-align: right;
+  }
+}
