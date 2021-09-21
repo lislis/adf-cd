@@ -33,9 +33,6 @@
              })
              .catch(e => { console.log(e) })
      },
-     components: {
-
-     },
      methods: {
          exportPDF() {
              html2image.toPng(document.querySelector('#thischatwindow'))

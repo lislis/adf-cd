@@ -28,9 +28,6 @@ export default {
         this.chats = response.data[1];
       })
       .catch(e => { console.log(e) })
-  },
-  components: {
-
   }
 }
 </script>

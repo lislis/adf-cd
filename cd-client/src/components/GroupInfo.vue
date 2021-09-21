@@ -7,8 +7,6 @@
   </div>
 </template>
 <script>
-import { genRandomHex } from '@/util'
-
 export default {
   name: 'GroupInfo',
   props: ['group'],
