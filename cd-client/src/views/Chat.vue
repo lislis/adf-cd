@@ -3,14 +3,10 @@
         <ChatInfo :chat="chat" />
         <MessageList :msgs="messages"></MessageList>
         <AddMessage :chat="chat"></AddMessage>
-        <button type="button" @click="exportPDF">Export</button>
     </div>
 </template>
 
 <script>
- import * as html2image from 'html-to-image'
- import * as download from 'downloadjs'
-
  export default {
      name: 'Chat',
      components: {},
@@ -34,12 +30,7 @@
              .catch(e => { console.log(e) })
      },
      methods: {
-         exportPDF() {
-             html2image.toPng(document.querySelector('#thischatwindow'))
-                       .then((dataUrl) => {
-                           download(dataUrl, 'test.png')
-                       })
-         }
+
      }
  }
 </script>

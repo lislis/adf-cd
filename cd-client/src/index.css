@@ -98,24 +98,83 @@
   .chat-item:active .visible-on-hover {
     display: block;
   }
+  .chat-header {
+    display: flex;
+    align-items: center;
+  }
+  .chat-contact {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+  .profile-pic {
+    background-color: var(--cream);
+    width: 2.4rem;
+    height: 2.4rem;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+  }
 
-}
+  #thischatwindow {
+    background-color: var(--white);
+  }
 
-@layer utilities {
   .bubble {
+    position: relative;
     display: inline-block;
-    padding: 1em;
-    background-color: cornflowerblue;
+    max-width: 80%;
+    padding: 6px 7px 4px 9px !important;
+    border-radius: 7px;
+    z-index: 2;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13)
+  }
+  .bubble:after {
+    content: "";
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    position: absolute;
+    top: 0.8rem;
+    transform: rotate(45deg);
+    z-index: 1;
+  }
+  .msg-content {
+    word-break: break-all;
+    text-align: left;
   }
   .left {
     text-align: left;
   }
+  .left .bubble {
+    margin-left: 0.4rem;
+    background-color: var(--cream);
+  }
+  .left .bubble:after {
+    left: -0.3rem;
+    background-color: var(--cream);
+  }
   .right {
     text-align: right;
   }
+  .right .bubble {
+    margin-right: 0.4rem;
+    background-color: var(--blue)
+  }
+  .right .bubble:after {
+    right: -0.3rem;
+    background-color: var(--blue)
+  }
 
+}
+
+@layer utilities {
   .mt-1 {
     margin-top: 1rem;
+  }
+  .my-05 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
   .mb-3 {
     margin-bottom: 3rem;
@@ -158,6 +217,9 @@
   .fw-bold {
     font-weight: 600;
   }
+  .fw-normal {
+    font-weight: 400;
+  }
 
   .arrow {
     width: 1.2rem;
@@ -166,10 +228,27 @@
   .arrow-right {
     transform: rotate(90deg)
   }
+  .arrow-left {
+    transform: rotate(-45deg)
+  }
   .arrow.primary {
     fill: var(--primary)
   }
+  .arrow.white {
+    fill: var(--white)
+  }
   .visible-on-hover {
     display: none;
+  }
+
+
+  .icon {
+    width: 1.2rem;
+    height: 1.6rem;
+    display: block;
+    text-indent: 999rem;
+    overflow: hidden;
+    background-image: url(/file-image-regular.svg);
+    background-repeat: no-repeat;
   }
 }
