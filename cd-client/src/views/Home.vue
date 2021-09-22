@@ -1,17 +1,23 @@
 <template>
 <div class="home">
-  <h1 class="">Chat-Dokumentation</h1>
+  <HeaderComp />
   <GroupStart />
-  </div>
+
+  <section>
+    Groups in localstorage
+  </section>
+</div>
 </template>
 
 <script>
+import HeaderComp from '@/components/HeaderComp'
 import GroupStart from '@/components/GroupStart'
 
 export default {
   name: 'Home',
   components: {
-    GroupStart
+    GroupStart,
+    HeaderComp
   }
 }
 </script>

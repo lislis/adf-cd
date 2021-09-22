@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class="groupstart">
     <form @submit.prevent="createGroup">
-      <label for="group-name">Starte eine Gruppe</label>
-      <div>
+      <label for="group-name" class="title">Starte eine Gruppe</label>
+      <div class="mt-1">
         <input type="text" name="" id="group-name" :placeholder="randoName" v-model="givenName" />
-        <button type="submit">Start</button>
+      </div>
+      <div class="mt-1">
+        <button type="submit" class="btn btn--primary">Start</button>
       </div>
     </form>
   </div>
@@ -36,6 +38,8 @@ export default {
         .then(response => {
           if (response.status === 200) {
             let id = response.data._id
+            //debugger
+            this.$store.commit('addGroup', response.data)
             this.$router.push({ path: `/groups/${id}`})
             this.isLoading = false
           }

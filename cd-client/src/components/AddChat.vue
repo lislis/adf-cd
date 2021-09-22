@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="px-1 mb-3">
     <form @submit.prevent="createChat">
-      <label for="chat-name">Chat hinzufügen</label>
+      <label for="chat-name" class="small-title">Chat hinzufügen</label>
       <div>
         <input type="text" name="" id="chat-name" :placeholder="randoName" v-model="givenName" />
-        <button type="submit">Hinzufügen</button>
+        <div v-if="isLoading">loading</div>
+        <button v-else type="submit" class="btn btn--primary mt-1">Hinzufügen</button>
       </div>
     </form>
   </div>
@@ -39,6 +40,7 @@ export default {
             this.isLoading = false
             this.givenName = ''
             this.randoName = this.randomName()
+            this.$store.commit('addChat', response.data)
           }
         }).catch(e => {
           this.isLoading = false;

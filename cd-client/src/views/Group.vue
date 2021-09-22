@@ -1,5 +1,6 @@
 <template>
 <div class="group">
+  <HeaderComp />
   <GroupInfo :group="group" />
   <ChatList :chats="chats"></ChatList>
   <AddChat :group="group"></AddChat>
@@ -7,27 +8,32 @@
 </template>
 
 <script>
+  import HeaderComp from '@/components/HeaderComp'
+
 export default {
   name: 'Group',
-  components: {},
+  components: { HeaderComp },
   beforeCreate() {
     this.$options.components.GroupInfo = require('@/components/GroupInfo.vue').default;
     this.$options.components.ChatList = require('@/components/ChatList.vue').default;
     this.$options.components.AddChat = require('@/components/AddChat.vue').default;
   },
-  data() {
-    return {
-      group: {},
-      chats: []
-    }
-  },
   created() {
+    //this.$store.commit('emptyState')
     this.$http.plain.get(`/groups/${this.$route.params.groupid}/chats`)
       .then(response => {
-        this.group = response.data[0];
-        this.chats = response.data[1];
+        this.$store.commit('addGroup', response.data[0]);
+        this.$store.commit('bulkAddChats', response.data[1]);
       })
       .catch(e => { console.log(e) })
+  },
+  computed: {
+    group() {
+      return this.$store.getters.getGroupById(this.$route.params.groupid);
+    },
+    chats() {
+      return this.$store.getters.getChatsByGroupId(this.$route.params.groupid);
+    }
   }
 }
 </script>

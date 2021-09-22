@@ -1,7 +1,5 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-
-  </div>
+<div class="adf-cd">
   <router-view/>
+</div>
 </template>
