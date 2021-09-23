@@ -54,6 +54,9 @@ export const store = createStore({
     },
     getGroupById: (state) => (groupId) => {
       return state.groups.find(x => x._id === groupId)
+    },
+    getChatById: (state) => (chatId) => {
+      return state.chats.find(x => x._id === chatId)
     }
   },
   plugins: [createPersistedState()]

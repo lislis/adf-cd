@@ -20,15 +20,16 @@
 
 
   a {
-    color: var(--primary);
+    color: var(--steel);
   }
 
-  input {
+  input[type=text] {
     display: inline-block;
     width: 100%;
     padding: .4rem .5rem;
     border: solid 2px var(--cream);
     border-radius: 2px;
+    color: var(--steel);
   }
   input:focus {
     outline-color: var(--primary);
@@ -37,6 +38,11 @@
   .adf-cd {
     height: 100vh;
     background-color: var(--white);
+    max-width: 860px;
+    margin: auto;
+  }
+  #app {
+    overflow-x: hidden;
   }
 }
 
@@ -61,12 +67,13 @@
   .title {
     font-weight: 600;
     font-size: 2rem;
+    color: var(--steel);
   }
 
   .small-title {
     font-weight: 600;
     font-size: 1.2rem;
-    color: var(--secondary);
+    color: var(--blue);
   }
 
   .btn {
@@ -74,18 +81,26 @@
     padding: .5em 1em;
     border-radius: 2px;
     font-weight: 600;
-    border: 2px solid currentColor;
-    transition: border-color 200ms ease;
+    //border: 2px solid currentColor;
+    //transition: border-color 200ms ease;
   }
 
 
   .btn--primary {
     background-color: var(--primary);
-    color: var(--black);
+    color: var(--white);
   }
   .btn--primary:hover,
   .btn--primary:active {
-    border-color: var(--primary);
+    //border-color: var(--primary);
+  }
+
+  .btn--round {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    padding: 0.6em 0.7em 0.4em 0.3em;
+    transform: rotate(45deg);
   }
 
   .chat-item {
@@ -146,8 +161,12 @@
   .left {
     text-align: left;
   }
+  .left .date {
+    color: var(--steel);
+  }
   .left .bubble {
     margin-left: 0.4rem;
+    color: var(--steel);
     background-color: var(--cream);
   }
   .left .bubble:after {
@@ -157,8 +176,12 @@
   .right {
     text-align: right;
   }
+  .right .date {
+    color: var(--white);
+  }
   .right .bubble {
     margin-right: 0.4rem;
+    color: var(--white);
     background-color: var(--blue)
   }
   .right .bubble:after {
@@ -166,6 +189,60 @@
     background-color: var(--blue)
   }
 
+  .composer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    background-color: var(--white);
+  }
+  .composer--message input {
+    border: none;
+    border-radius: 2rem;
+    padding: 0.7rem 1.4rem;
+  }
+  .composer--compose {
+    flex-grow: 1;
+  }
+  .composer--send .btn--round {
+    margin-left: 0.5rem;
+  }
+  .composer--radio {
+    margin-bottom: 0.5rem;
+  }
+  .composer--radio label {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    //background-color: var(--primary);
+    border-radius: 1rem;
+  }
+
+  .checked, .unchecked {
+    width: 1.2rem;
+    height: 1.2rem;
+    vertical-align: sub;
+    margin-right: 0.35rem;
+  }
+  .composer--radio input[type=radio] ~ .checked {
+    display: none;
+  }
+  .composer--radio input[type=radio] ~ .unchecked {
+    display: inline-block;
+  }
+  .composer--radio input[type=radio]:checked ~ .checked {
+    display: inline-block;
+  }
+  .composer--radio input[type=radio]:checked ~ .unchecked {
+    display: none;
+  }
+  .isLeft {
+    color: var(--white);
+    background-color: var(--blue);
+  }
+  .isRight {
+    color: var(--steel);
+    background-color: var(--cream);
+  }
 }
 
 @layer utilities {
@@ -206,12 +283,14 @@
   }
 
   .small {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .date {
     color: var(--grey);
+    //color: currentColor;
     font-weight: 400;
+    opacity: 0.8;
   }
 
   .fw-bold {
@@ -232,7 +311,7 @@
     transform: rotate(-45deg)
   }
   .arrow.primary {
-    fill: var(--primary)
+    fill: var(--steel)
   }
   .arrow.white {
     fill: var(--white)
@@ -250,5 +329,14 @@
     overflow: hidden;
     background-image: url(/file-image-regular.svg);
     background-repeat: no-repeat;
+  }
+  .a11y-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
   }
 }

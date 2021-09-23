@@ -2,22 +2,21 @@
 <div class="home">
   <HeaderComp />
   <GroupStart />
-
-  <section>
-    Groups in localstorage
-  </section>
+  <LocalGroups />
 </div>
 </template>
 
 <script>
 import HeaderComp from '@/components/HeaderComp'
 import GroupStart from '@/components/GroupStart'
+import LocalGroups from '@/components/LocalGroups'
 
 export default {
   name: 'Home',
   components: {
     GroupStart,
-    HeaderComp
+    HeaderComp,
+    LocalGroups
   }
 }
 </script>
