@@ -1,5 +1,5 @@
 <template>
-<section class="p-1 mt-1">
+<section class="p-1 mt-1 msg-list">
   <ul>
     <li v-for="msg in msgs"
         :key="msg._id"
@@ -18,14 +18,6 @@
 export default {
   name: 'MessageList',
   props: ['msgs'],
-  data() {
-    return {
-
-    }
-  },
-  created() {
-
-  },
   methods: {
     createdAt(d) {
       let opt = { hour: '2-digit', minute: '2-digit' };

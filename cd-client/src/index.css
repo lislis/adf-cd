@@ -227,6 +227,9 @@
     color: var(--steel);
     background-color: var(--cream);
   }
+  .msg-list {
+    min-height: 30rem;
+  }
 }
 
 @layer utilities {
