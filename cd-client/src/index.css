@@ -18,7 +18,6 @@
     --padding: 0.5rem;
   }
 
-
   a {
     color: var(--steel);
   }
@@ -96,10 +95,6 @@
   .btn--primary {
     background-color: var(--primary);
     color: var(--white);
-  }
-  .btn--primary:hover,
-  .btn--primary:active {
-    //border-color: var(--primary);
   }
 
   .btn--round {
@@ -203,10 +198,18 @@
     padding-bottom: 0.5rem;
     background-color: var(--white);
   }
+  .composer--message {
+    display: flex;
+    border-radius: 2rem;
+    background-color: white;
+    //overflow: hidden;
+    padding-left: 0.6rem;
+    padding-right: 1.6rem;
+  }
+
   .composer--message input {
     border: none;
-    border-radius: 2rem;
-    padding: 0.7rem 1.4rem;
+    padding: 0.7rem 0.5rem;
   }
   .composer--compose {
     flex-grow: 1;
@@ -215,34 +218,7 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
-  .composer--radio {
-    margin-bottom: 0.5rem;
-  }
-  .composer--radio label {
-    display: inline-block;
-    padding: 0.2rem 0.5rem;
-    //background-color: var(--primary);
-    border-radius: 1rem;
-  }
 
-  .checked, .unchecked {
-    width: 1.2rem;
-    height: 1.2rem;
-    vertical-align: sub;
-    margin-right: 0.35rem;
-  }
-  .composer--radio input[type=radio] ~ .checked {
-    display: none;
-  }
-  .composer--radio input[type=radio] ~ .unchecked {
-    display: inline-block;
-  }
-  .composer--radio input[type=radio]:checked ~ .checked {
-    display: inline-block;
-  }
-  .composer--radio input[type=radio]:checked ~ .unchecked {
-    display: none;
-  }
   .isLeft {
     color: var(--white);
     background-color: var(--blue);

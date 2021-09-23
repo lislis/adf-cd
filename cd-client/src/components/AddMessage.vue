@@ -17,6 +17,7 @@
         </div>
       <div class="composer--compose">
         <div class="composer--message">
+          <EmojiPicker @pick-emoji="pickUpEmoji" />
           <label for="msg-name" class="a11y-hidden">Text hinzufügen</label>
           <input type="text" name="" id="msg-name" v-model="msg" class="" />
         </div>
@@ -40,11 +41,12 @@
 </template>
 <script>
   import Loading from '@/components/Loading'
+  import EmojiPicker from '@/components/EmojiPicker'
 
 export default {
   name: 'AddMessage',
   props: [ 'chat' ],
-  components: { Loading },
+  components: { Loading, EmojiPicker },
   data() {
     return {
       isLoading: false,
@@ -62,7 +64,7 @@ export default {
                                              chat: this.chat._id,
                                              isOwnMessage: itMe})
           .then(response => {
-          if (response.status === 200) {
+            if (response.status === 200) {
             this.isLoading = false
             this.msg = ''
             this.$store.commit('addMessage', response.data)
@@ -72,6 +74,9 @@ export default {
           console.log(e)
         })
       }
+    },
+    pickUpEmoji(emoji) {
+      this.msg = this.msg + emoji;
     }
   }
 }
