@@ -16,3 +16,12 @@ services:
       - "3000:3000"
     links:
       - db
+  client:
+    build:
+      context: ./cd-client
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    links:
+      - server
