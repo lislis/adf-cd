@@ -85,7 +85,14 @@
     //transition: border-color 200ms ease;
   }
 
-
+  .btn--blue {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+  .btn--cream {
+    background-color: var(--cream);
+    color: var(--steel);
+  }
   .btn--primary {
     background-color: var(--primary);
     color: var(--white);
@@ -206,6 +213,7 @@
   }
   .composer--send .btn--round {
     margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
   .composer--radio {
     margin-bottom: 0.5rem;
