@@ -6,16 +6,19 @@
         <input type="text" name="" id="group-name" :placeholder="randoName" v-model="givenName" />
       </div>
       <div class="mt-1">
-        <button type="submit" class="btn btn--primary">Start</button>
+        <Loading v-if="isLoading" />
+        <button v-else type="submit" class="btn btn--primary">Start</button>
       </div>
     </form>
   </div>
 </template>
 <script>
-  import { genRandomHex } from '@/util'
+import { genRandomHex } from '@/util'
+import Loading from '@/components/Loading'
 
 export default {
   name: 'GroupStart',
+  components: { Loading },
   data() {
     return {
       isLoading: false,

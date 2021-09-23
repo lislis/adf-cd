@@ -4,18 +4,20 @@
       <label for="chat-name" class="small-title">Chat hinzufügen</label>
       <div>
         <input type="text" name="" id="chat-name" :placeholder="randoName" v-model="givenName" />
-        <div v-if="isLoading">loading</div>
+        <Loading v-if="isLoading" />
         <button v-else type="submit" class="btn btn--primary mt-1">Hinzufügen</button>
       </div>
     </form>
   </div>
 </template>
 <script>
+  import Loading from '@/components/Loading'
   import { genRandomHex } from '@/util'
 
 export default {
   name: 'AddChat',
   props: [ 'group' ],
+  components: { Loading },
   data() {
     return {
       isLoading: false,

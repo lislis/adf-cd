@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="composer--send">
-          <div v-if="isLoading">loading...</div>
+          <div  v-if="isLoading"><Loading /></div>
           <button v-else type="submit" class="btn--primary btn--round">
             <span class="a11y-hidden">Hinzufügen</span>
             <span>
@@ -40,9 +40,12 @@
 </div>
 </template>
 <script>
+  import Loading from '@/components/Loading'
+
 export default {
   name: 'AddMessage',
   props: [ 'chat' ],
+  components: { Loading },
   data() {
     return {
       isLoading: false,
