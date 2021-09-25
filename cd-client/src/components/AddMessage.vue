@@ -4,7 +4,7 @@
     <div class="composer">
       <div class="composer--send">
           <div  v-if="isLoading"><Loading /></div>
-          <button v-else type="button" class="btn--cream btn--round"
+          <button v-else type="button" class="adf-btn--cream adf-btn--round"
                   @click="createMessage(false)">
             <span class="a11y-hidden">Hinzufügen</span>
             <span>
@@ -24,7 +24,7 @@
       </div>
       <div class="composer--send">
           <div  v-if="isLoading"><Loading /></div>
-          <button v-else type="button" class="btn--blue btn--round"
+          <button v-else type="button" class="adf-btn--blue adf-btn--round"
                   @click="createMessage(true)">
             <span class="a11y-hidden">Hinzufügen</span>
             <span>

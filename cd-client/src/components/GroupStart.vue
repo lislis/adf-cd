@@ -7,7 +7,7 @@
       </div>
       <div class="mt-1">
         <Loading v-if="isLoading" />
-        <button v-else type="submit" class="btn btn--primary">Start</button>
+        <button v-else type="submit" class="adf-btn adf-btn--primary">Start</button>
       </div>
     </form>
   </div>

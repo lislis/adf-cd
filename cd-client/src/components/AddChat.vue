@@ -5,7 +5,7 @@
       <div>
         <input type="text" name="" id="chat-name" :placeholder="randoName" v-model="givenName" />
         <Loading v-if="isLoading" />
-        <button v-else type="submit" class="btn btn--primary mt-1">Hinzufügen</button>
+        <button v-else type="submit" class="adf-btn adf-btn--primary mt-1">Hinzufügen</button>
       </div>
     </form>
   </div>

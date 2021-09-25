@@ -1,4 +1,5 @@
 module.exports = {
+  filenameHashing: false,
   lintOnSave: false,
   chainWebpack: config => {
     config

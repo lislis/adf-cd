@@ -35,12 +35,12 @@
   }
 
   .adf-cd {
-    height: 100vh;
+    height: 100%;
     background-color: var(--white);
     max-width: 860px;
     margin: auto;
   }
-  #app {
+  #adf-cd {
     overflow-x: hidden;
   }
 }
@@ -75,7 +75,7 @@
     color: var(--blue);
   }
 
-  .btn {
+  .adf-btn {
     display: inline-block;
     padding: .5em 1em;
     border-radius: 2px;
@@ -84,20 +84,20 @@
     //transition: border-color 200ms ease;
   }
 
-  .btn--blue {
+  .adf-btn--blue {
     background-color: var(--blue);
     color: var(--white);
   }
-  .btn--cream {
+  .adf-btn--cream {
     background-color: var(--cream);
     color: var(--steel);
   }
-  .btn--primary {
+  .adf-btn--primary {
     background-color: var(--primary);
     color: var(--white);
   }
 
-  .btn--round {
+  .adf-btn--round {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
@@ -214,7 +214,7 @@
   .composer--compose {
     flex-grow: 1;
   }
-  .composer--send .btn--round {
+  .composer--send .adf-btn--round {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
