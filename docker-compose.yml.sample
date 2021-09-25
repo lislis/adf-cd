@@ -13,6 +13,11 @@ services:
       context: ./server
       dockerfile: Dockerfile
     restart: unless-stopped
+    environment:
+      - PORT=3000       
+      - MONGO_DB=adf-cd-db
+      - MONGO_HOST=db
+      - MONGO_PORT=27017
     port:
       - "3000:3000"
     links:

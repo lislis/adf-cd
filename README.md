@@ -13,6 +13,10 @@ In `cd-client` rename adjust the `env.sample` to `.env`. Then run `yarn serve`.
 
 In `cd-client` rename adjust the `env.sample` to `.env` and enter the right API_URL. It's important to do this step before running `docker-compose up` since docker sets env variables only after the images (in this case the vue app) is built.
 
-Copy and adjust the `docker-compose.yml.sample`, this is mostly the ports.
+Copy and adjust the `docker-compose.yml.sample`, this is mostly the ports and the env variables for the server service.
 
 Then run `docker-compose up` and :sparkles:!
+
+### Gotachas!
+
+- When changing the `cd-client/.env` you have to build the image again for the changes to take effect: `docker-compose up --build`.
