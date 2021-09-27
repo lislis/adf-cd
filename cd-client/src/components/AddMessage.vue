@@ -58,8 +58,8 @@ export default {
   },
   methods: {
     createMessage(itMe) {
-      this.isLoading = true
       if (this.msg !== '') {
+        this.isLoading = true
         this.$http.plain.post('/messages', { message: this.msg,
                                              chat: this.chat._id,
                                              isOwnMessage: itMe})
