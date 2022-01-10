@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Chat = require('../models/Chat.js');
 const Message = require('../models/Message.js');
+const Person = require('../models/Person');
 
 router.get('/', (req, res, next) => {
   Chat.find((err, chats) => {
@@ -11,10 +12,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  Chat.findById(req.params.id, (err, chat) => {
-    if (err) return next(err);
-    res.json(chat);
-  });
+  Promise.all([
+    Chat.findById(req.params.id).exec(),
+    Person.find({ chat: req.params.id}).exec()
+  ]).then(values => {
+    res.json.values();
+  }).catch(e => req.logger.error(e));
 });
 
 router.get('/:id/messages', (req, res, next) => {
@@ -22,8 +25,8 @@ router.get('/:id/messages', (req, res, next) => {
     Chat.findById(req.params.id).exec(),
     Message.find({chat: req.params.id}).exec()
   ]).then(values => {
-    res.json(values)
-  }).catch(e => req.logger.error(e))
+    res.json(values);
+  }).catch(e => req.logger.error(e));
 });
 
 router.post('/', (req, res, next) => {
