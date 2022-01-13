@@ -11,9 +11,14 @@ import * as download from 'downloadjs'
 
 export default {
   name: "Save2Png",
+  props: ['chat'],
+  data() {
+    return {
+
+    }
+  },
   methods: {
     exportPng() {
-      debugger
       html2image.toPng(document.querySelector('#thischatwindow'))
         .then((dataUrl) => {
           download(dataUrl, `adf-cd-${this.chat.name}.png`)

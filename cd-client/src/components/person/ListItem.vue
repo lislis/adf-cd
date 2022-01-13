@@ -1,6 +1,6 @@
 <template>
-<li>
-  <Avatar inline="true" :name="person.name"></Avatar>
+<li class="mb-1">
+  <Avatar inline="true" :name="person.name" class="mr-1"></Avatar>
   <form v-if="isEdit" @submit.prevent="updatePerson(person._id)">
     <input autofocus type="text" name="name" v-model="editPerson.name" @blur="updatePerson(person._id)" />
     <Loading v-if="isLoading" />

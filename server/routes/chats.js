@@ -33,7 +33,13 @@ router.get('/:id/messages', (req, res, next) => {
 router.post('/', (req, res, next) => {
   Chat.create(req.body, (err, chat) => {
     if (err) return next(err);
-    res.json(chat);
+
+    Promise.all([
+      Person.create({ chat: chat._id, name: 'A', isOwnMessage: true }),
+      Person.create({ chat: chat._id, name: 'B', isOwnMessage: false })
+    ]).then(val => {
+      res.json(chat);
+    }).catch(e => req.logger.error(e));
   });
 });
 

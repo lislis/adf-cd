@@ -8,33 +8,41 @@
     </router-link>
   </div>
   <div class="chat-contact px-1">
-    <img src="" class="profile-pic" alt="profile-pic" />
+    <Avatar :name="chat.name" />
     <div class="px-1">
       <h1>{{ chat.name }}</h1>
-      <p class="fw-normal">online</p>
+      <p class="fw-normal">{{ peopleInChat }}</p>
     </div>
   </div>
   <div class="d-flex">
-    <Save2Png />
+    <Save2Png v-if="chat" :chat="chat"/>
 
     <Settings />
   </div>
 </div>
 </template>
 <script>
+import Avatar from 'vue3-avatar'
 import Settings from '@/components/chat/Settings'
 import Save2Png from '@/components/save2Png'
 
 export default {
   name: 'ChatInfo',
   props: ['chat', 'people'],
-  components: { Settings, Save2Png },
+  components: { Settings, Save2Png, Avatar },
   data() {
     return {
 
     }
   },
   created() {
+  },
+  computed: {
+    peopleInChat() {
+      return this.$store.getters.getPeopleByChatId(this.$route.params.chatid)
+        .map(x => x.name)
+        .join(', ')
+    }
   }
 }
 </script>
