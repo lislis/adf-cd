@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Chat = require('../models/Person.js');
+const Person = require('../models/Person.js');
 
 router.get('/', (req, res, next) => {
   Person.find((err, persons) => {

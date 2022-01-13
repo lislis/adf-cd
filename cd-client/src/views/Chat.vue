@@ -18,8 +18,9 @@ export default {
   created() {
     this.$http.plain.get(`/chats/${this.$route.params.chatid}/messages`)
       .then(response => {
-        this.$store.commit('addChat', response.data[1]);
+        this.$store.commit('addChat', response.data[0]);
         this.$store.commit('bulkAddMessages', response.data[1]);
+        this.$store.commit('bulkAddPeople', response.data[2]);
       })
       .catch(e => { console.log(e) })
   },

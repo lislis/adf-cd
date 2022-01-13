@@ -6,7 +6,8 @@ export const store = createStore({
     return {
       groups: [],
       chats: [],
-      messages: []
+      messages: [],
+      people: []
     }
   },
   mutations: {
@@ -14,6 +15,7 @@ export const store = createStore({
       state.groups = [];
       state.chats = [];
       state.messages = [];
+      state.people = [];
     },
     addGroup(state, group) {
       if (state.groups.filter(x => x._id === group._id).length === 0) {
@@ -43,6 +45,30 @@ export const store = createStore({
           state.messages.push(m)
         }
       })
+    },
+    bulkAddPeople(state, ppl) {
+      ppl.forEach(p => {
+        if (state.people.filter(x => x._id === p._id).length === 0) {
+          state.people.push(p)
+        }
+      })
+    },
+    addPerson(state, person) {
+      if (state.people.filter(x => x._id === person._id).length === 0) {
+        state.people.push(person)
+      }
+    },
+    removePerson(state, person) {
+      state.people.splice(state.people.indexOf(person), 1)
+    },
+    updatePerson(state, person) {
+      let index = state.people.findIndex(p => p._id === person._id);
+
+      state.people = [
+        ...state.people.slice(0, index),
+        person,
+        ...state.people.slice(index + 1)
+      ];
     }
   },
   getters: {
@@ -57,6 +83,12 @@ export const store = createStore({
     },
     getChatById: (state) => (chatId) => {
       return state.chats.find(x => x._id === chatId)
+    },
+    getPeopleByChatId: (state) => (chatId) => {
+      return state.people.filter(x => x.chat === chatId)
+    },
+    getPersonById: (state) => (id) => {
+      return state.people.find(x => x._id === id)
     }
   },
   plugins: [createPersistedState()]

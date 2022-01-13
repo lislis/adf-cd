@@ -51,7 +51,7 @@ app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use('/api/groups', groups);
 app.use('/api/chats', chats);
 app.use('/api/messages', messages);
-app.use('/api/persons', messages);
+app.use('/api/persons', persons);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -18,6 +18,8 @@
     --secondary: var(--steel);
 
     --padding: 0.5rem;
+
+    --header-height: 3.8rem;
   }
 
   #adf-cd *,
@@ -46,6 +48,8 @@
   }
 
   .adf-cd {
+    position: relative;
+    overflow: hidden;
     height: 100%;
     background-color: var(--white);
     max-width: 860px;
@@ -89,7 +93,7 @@
   #adf-cd .header {
     display: flex;
     align-items: center;
-    min-height: 3.5em;
+    min-height: var(--header-height);
     width: 100%;
     border: none;
     background-color: var(--secondary);
@@ -270,6 +274,27 @@
   #adf-cd .msg-list {
     min-height: 30em;
   }
+
+
+  #adf-cd .settings-plane {
+    background-color: var(--steel);
+    height: 100%;
+    width: 20rem;
+    position: absolute;
+    top: var(--header-height);
+    right: 0;
+    z-index: 4;
+    padding: var(--padding);
+    transition: transform 200ms ease-in-out;
+    transform: translateX(21rem);
+  }
+
+  #adf-cd .settings-plane.is-open {
+    transform: translateX(0);
+  }
+  #adf-cd .settings-plane a {
+    color: var(--white);
+  }
 }
 
 @layer utilities {
@@ -365,4 +390,9 @@
     white-space: nowrap;
     width: 1px;
   }
+
+  #adf-cd .d-flex {
+    display: flex;
+  }
+
 }
