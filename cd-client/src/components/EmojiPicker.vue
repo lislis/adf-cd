@@ -75,7 +75,7 @@
    position: absolute;
    bottom: 5rem;
    right: 0;
-   left: -2.7rem;
+   left: -1rem;
    min-height: 20rem;
    width: 22rem;
 

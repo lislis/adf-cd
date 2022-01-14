@@ -17,7 +17,7 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
-router.get('/:id/chats', (req, res, next) => {
+router.get('/:id/chats', (req, res) => {
   Promise.all([
     Group.findById(req.params.id).exec(),
     Chat.find({group: req.params.id}).exec()

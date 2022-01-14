@@ -6,8 +6,12 @@
         :key="chat._id"
         class="fw-bold">
       <router-link :to='{ name: "Chat", params: {chatid: chat._id }}' class="chat-item py-1">
-        <div><span>{{ chat.name}}</span><br>
+        <div>
+          <Avatar :name="chat.name" inline="true" class="mr-1" />
+          <div class="d-inline">
+          <span>{{ chat.name}}</span><br>
           <span class="date small">{{ createdAt(chat.created_date) }}</span>
+          </div>
         </div>
 
         <span class="visible-on-hover">
@@ -25,10 +29,12 @@
 </section>
 </template>
 <script>
+import Avatar from 'vue3-avatar'
 
 export default {
   name: 'ChatList',
   props: ['chats'],
+  components: { Avatar },
   methods: {
     createdAt(d) {
       let opt = { year: 'numeric', month: 'short', day: 'numeric' };

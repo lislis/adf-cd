@@ -11,6 +11,7 @@ const app = express();
 const groups = require('./routes/groups');
 const chats = require('./routes/chats');
 const messages = require('./routes/messages');
+const persons = require('./routes/persons');
 
 const MONGO_DB = process.env['MONGO_DB'];
 //const MONGO_PORT = process.env['MONGO_PORT'];
@@ -50,6 +51,7 @@ app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use('/api/groups', groups);
 app.use('/api/chats', chats);
 app.use('/api/messages', messages);
+app.use('/api/persons', persons);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
