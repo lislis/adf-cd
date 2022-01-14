@@ -19,7 +19,6 @@
 <script>
   import PersonListItem from '@/components/person/ListItem.vue'
   import NewPersonForm from '@/components/person/NewPerson.vue'
-  import { genRandomHex } from '@/util'
 
 export default {
   name: 'ChatSettings',

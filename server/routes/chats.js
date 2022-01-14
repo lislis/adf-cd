@@ -11,16 +11,16 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', (req, res) => {
   Promise.all([
     Chat.findById(req.params.id).exec(),
     Person.find({ chat: req.params.id}).exec()
-  ]).then(values => {
+  ]).then(() => {
     res.json.values();
   }).catch(e => req.logger.error(e));
 });
 
-router.get('/:id/messages', (req, res, next) => {
+router.get('/:id/messages', (req, res) => {
   Promise.all([
     Chat.findById(req.params.id).exec(),
     Message.find({chat: req.params.id}).exec(),
@@ -37,7 +37,7 @@ router.post('/', (req, res, next) => {
     Promise.all([
       Person.create({ chat: chat._id, name: 'A', isOwnMessage: true }),
       Person.create({ chat: chat._id, name: 'B', isOwnMessage: false })
-    ]).then(val => {
+    ]).then(() => {
       res.json(chat);
     }).catch(e => req.logger.error(e));
   });

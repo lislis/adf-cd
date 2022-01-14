@@ -38,7 +38,6 @@ export default {
                                            chat: this.$route.params.chatid })
         .then(response => {
           if (response.status == 200) {
-            let id = response.data._id;
             this.isLoading = false
             this.name = ''
             this.avatar = ''
