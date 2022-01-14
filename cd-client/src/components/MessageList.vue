@@ -4,7 +4,7 @@
     <li v-for="msg in msgs"
         :key="msg._id"
         :class="leftOrRight(msg)" class="my-05">
-      <Bubble :msg="msg" />
+      <Bubble :msg="msg" :isTwoPerson="isTwoPerson" />
     </li>
   </ul>
 </section>
@@ -14,7 +14,7 @@
 
 export default {
   name: 'MessageList',
-  props: ['msgs'],
+  props: ['msgs', 'isTwoPerson'],
   components: { Bubble },
   methods: {
 

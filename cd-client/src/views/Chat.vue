@@ -1,7 +1,7 @@
 <template>
 <div class="chat" id="thischatwindow">
   <ChatInfo :chat="chat" />
-  <MessageList :msgs="messages"></MessageList>
+  <MessageList :msgs="messages" :isTwoPerson="isTwoPerson"></MessageList>
   <AddMessage :chat="chat"></AddMessage>
 </div>
 </template>
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     refillPeopleOfChat(length) {
-      [...Array(2 - this.person.length).keys()].forEach(x => {
+      [...Array(2 - length).keys()].forEach(x => {
         this.$http.plain.post('/persons/', { name: genRandomHex(12),
                                              isOwnMessage: (x === 1) ? true : false,
                                              chat: this.chat._id })
@@ -53,6 +53,9 @@ export default {
     },
     messages() {
       return this.$store.getters.getMessagesByChatId(this.$route.params.chatid);
+    },
+    isTwoPerson() {
+      return this.$store.getters.getPeopleByChatId(this.$route.params.chatid).length <= 2;
     }
   }
 }

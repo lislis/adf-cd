@@ -1,9 +1,9 @@
 <template>
 <div class="d-flex ai-end" :class="{'fd-rreverse': msg.isOwnMessage}">
-  <Avatar :name="person.name" size="35" inline="true" />
+  <Avatar :name="person.name" v-if="!isTwoPerson" size="35" inline="true" />
   <div class="bubble">
-    <div v-if="!msg.isOwnMessage"><small>{{ person.name }}</small></div>
-    <div class="msg-content">{{ msg.message }}</div>
+    <div v-if="!msg.isOwnMessage && !isTwoPerson" class="small">{{ person.name }}</div>
+    <div class="msg-content my-02">{{ msg.message }}</div>
     <div class="date small">
       <time :datetime="msg.created_date">{{ createdAt }}</time></div>
   </div>
@@ -14,7 +14,7 @@
 
 export default {
   name: "Bubble",
-  props: ['msg'],
+  props: ['msg', 'isTwoPerson'],
   components: { Avatar },
   methods: {
 
