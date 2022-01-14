@@ -188,6 +188,7 @@
     padding: 6px 7px 4px 9px !important;
     border-radius: 7px;
     z-index: 2;
+    //top: 5px;
     box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13)
   }
   #adf-cd .bubble:after {
@@ -196,9 +197,12 @@
     width: 0.7em;
     height: 0.7em;
     position: absolute;
-    top: 0.8em;
+    bottom: .5em;
     transform: rotate(45deg);
     z-index: 1;
+  }
+  #adf-cd .msg-list ul {
+    padding: 0 var(--padding)
   }
   #adf-cd .msg-content {
     word-break: break-all;
@@ -211,7 +215,7 @@
     color: var(--steel);
   }
   #adf-cd .left .bubble {
-    margin-left: 0.4em;
+    margin-left: 0.6em;
     color: var(--steel);
     background-color: var(--cream);
   }
@@ -226,7 +230,7 @@
     color: var(--white);
   }
   #adf-cd .right .bubble {
-    margin-right: 0.4em;
+    margin-right: 0.6em;
     color: var(--white);
     background-color: var(--blue)
   }
@@ -430,4 +434,11 @@
     vertical-align: middle;
   }
 
+  #adf-cd .ai-end {
+    align-items: end
+  }
+
+  #adf-cd .fd-rreverse {
+    flex-direction: row-reverse;
+  }
 }

@@ -84,6 +84,7 @@ export default {
     },
     chooseWriting(p) {
       this.currentlyWriting = p
+      this.isOpen = false;
     },
     isCurrent(p) {
       return p._id == this.currentlyWriting
