@@ -11,7 +11,7 @@
     <Avatar :name="chat.name" />
     <div class="px-1">
       <h1>{{ chat.name }}</h1>
-      <p class="fw-normal">{{ peopleInChat }}</p>
+      <p class="fw-normal chat-contact-list">{{ peopleInChat }}</p>
     </div>
   </div>
   <div class="d-flex">

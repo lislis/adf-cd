@@ -87,6 +87,20 @@
     padding: 0;
     margin: 0;
   }
+  #adf-cd button {
+    cursor: pointer;
+    transform-origin: center center;
+    transition: transform 120ms ease-in-out;
+  }
+  #adf-cd button.is-rot {
+    transform: rotate(90deg);
+  }
+  #adf-cd button.is-rot-full {
+    transform: rotate(180deg);
+  }
+  #adf-cd button.is-rot-half {
+    transform: rotate(45deg);
+  }
 }
 
 @layer components {
@@ -168,6 +182,14 @@
     display: flex;
     align-items: center;
   }
+
+  #adf-cd .chat-contact-list {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 40rem;
+  }
+
   #adf-cd .profile-pic {
     background-color: var(--cream);
     width: 2.4em;
@@ -300,6 +322,21 @@
     color: var(--white);
   }
 
+  #adf-cd .settings-plane .avatar {
+    flex-basis: 45px;
+    flex-shrink: 0
+  }
+
+  #adf-cd .settings-name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  #adf-cd .settings-rm {
+    flex-grow: 1;
+    text-align: right;
+  }
+
   #adf-cd .people-choice-plane {
     position: absolute;
     bottom: var(--header-height);
@@ -342,6 +379,9 @@
   }
   #adf-cd .mr-1 {
     margin-right: 1em;
+  }
+  #adf-cd .mr-05 {
+    margin-right: 0.5em;
   }
 
   #adf-cd .p-2 {
@@ -436,6 +476,9 @@
 
   #adf-cd .ai-end {
     align-items: end
+  }
+  #adf-cd .ai-center {
+    align-items: center
   }
 
   #adf-cd .fd-rreverse {

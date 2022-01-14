@@ -58,9 +58,6 @@ export default {
   },
   created() {
     this.isLoading = false
-    if (this.person.length < 2) {
-      this.refillPeopleOfChat();
-    }
   },
   methods: {
     createMessage(itMe) {
@@ -86,20 +83,6 @@ export default {
     pickUpEmoji(emoji) {
       this.msg = this.msg + emoji;
     },
-    refillPeopleOfChat() {
-      [...Array(2 - this.person.length).keys()].forEach(x => {
-        this.$http.plain.post('/persons/', { name: `Person ${x + 1}`,
-                                             isOwnMessage: (x === 1) ? true : false,
-                                             chat: this.chat._id })
-          .then(response => {
-            if (response.status == 200) {
-              this.$store.commit('addPerson', response.data)
-            }
-          }).catch(e => {
-            console.log(e);
-          })
-      })
-    }
   },
   computed: {
     person() {

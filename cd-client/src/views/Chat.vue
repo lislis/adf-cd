@@ -7,6 +7,8 @@
 </template>
 
 <script>
+  import { genRandomHex } from '@/util'
+
 export default {
   name: 'Chat',
   components: {},
@@ -21,10 +23,28 @@ export default {
         this.$store.commit('addChat', response.data[0]);
         this.$store.commit('bulkAddMessages', response.data[1]);
         this.$store.commit('bulkAddPeople', response.data[2]);
+
+        if (response.data[2].length < 2) {
+          this.refillPeopleOfChat(response.data[2].length);
+        }
       })
       .catch(e => { console.log(e) })
   },
   methods: {
+    refillPeopleOfChat(length) {
+      [...Array(2 - this.person.length).keys()].forEach(x => {
+        this.$http.plain.post('/persons/', { name: genRandomHex(12),
+                                             isOwnMessage: (x === 1) ? true : false,
+                                             chat: this.chat._id })
+          .then(response => {
+            if (response.status == 200) {
+              this.$store.commit('addPerson', response.data)
+            }
+          }).catch(e => {
+            console.log(e);
+          })
+      })
+    }
 
   },
   computed: {
