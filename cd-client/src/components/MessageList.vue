@@ -10,16 +10,16 @@
 </section>
 </template>
 <script>
-  import Bubble from '@/components/message/Bubble.vue'
+import Bubble from '@/components/message/Bubble.vue'
 
 export default {
   name: 'MessageList',
   props: ['msgs', 'isTwoPerson'],
   components: { Bubble },
   methods: {
-
     leftOrRight(m) {
-      return m.isOwnMessage ? 'right' : 'left'
+      const p = this.$store.getters.getPersonById(m.person) || { isOwnMessage: false }
+      return p.isOwnMessage ? 'right' : 'left'
     }
   }
 }

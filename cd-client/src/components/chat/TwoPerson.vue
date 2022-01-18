@@ -44,6 +44,7 @@
 <script>
 import Loading from '@/components/Loading'
 import EmojiPicker from '@/components/EmojiPicker'
+import { messageContainsUrl } from '@/util'
 
 export default {
   name: "Two Person Chat",
@@ -63,6 +64,7 @@ export default {
     createMessage(itMe) {
       if (this.msg !== '') {
         let person = this.person.find(x => x.isOwnMessage == itMe);
+        messageContainsUrl(this.msg, person._id, this.chat._id);
         this.isLoading = true
         this.$http.plain.post('/messages', { message: this.msg,
                                              chat: this.chat._id,

@@ -45,6 +45,7 @@
 import Loading from '@/components/Loading'
 import EmojiPicker from '@/components/EmojiPicker'
 import Avatar from 'vue3-avatar'
+import { messageContainsUrl } from '@/util'
 
 export default {
   name: 'AddMessage',
@@ -65,7 +66,8 @@ export default {
   methods: {
     createMessageByPerson() {
       if (this.msg !== '') {
-        this.isLoading = true
+        messageContainsUrl(this.msg, this.currentlyWriting._id, this.chat._id);
+        this.isLoading = true;
         this.$http.plain.post('/messages', { message: this.msg,
                                              chat: this.chat._id,
                                              person: this.currentlyWriting._id,
