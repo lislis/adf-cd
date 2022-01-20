@@ -1,39 +1,27 @@
 const express = require('express');
 const router = express.Router();
 const Message = require('../models/Message.js');
-const ogs = require('open-graph-scraper');
+const { buildLinkExpandMessage } = require('../utils/messages-util.js');
 
-router.post('/linkexpand',async (req, res, next) => {
+router.post('/linkexpand', async (req, res, next) => {
   const link = req.body.link;
-  const p = req.body.personId;
-  const c = req.body.chatId;
-
-  const options = { url: link };
+  const person = req.body.personId;
+  const chat = req.body.chatId;
 
   try {
-    const { error, result, response } =  await ogs(options);
-    if (result.success) {
-      console.log(result);
+    let builtMessage = await buildLinkExpandMessage(link);
+    let fullMessage = { message: builtMessage,
+                      person,
+                      chat };
+    Message.create(fullMessage)
+      .then(message => {
+        return res.json(message);
+      }).catch(e => {
+        return next(e);
+      });
 
-      let msg = `${result.ogTitle}<br>
-<a href="${result.ogUrl}">${result.ogUrl}</a><br>
-${result.ogDescription.slice(0, 80)}...<br>
-<img src="${result.ogImage.url}" alt="" width="200">`;
-
-      let fullMessage = { message: msg,
-                          person: p,
-                          chat: c };
-      console.log(fullMessage);
-      Message.create(fullMessage)
-        .then(message => {
-          return res.json(message);
-        }).catch(e => {
-          return next(e);
-        });
-    }
-  } catch (e) {
-    //req.logger.error("error fetching og meta data");
-    return res.json({ success: false });
+  } catch(e) {
+    return next(e);
   }
 });
 
