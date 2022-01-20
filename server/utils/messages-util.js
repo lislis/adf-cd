@@ -32,7 +32,7 @@ function handleOGLink(link) {
 
     ogs(options)
       .then(data => {
-        const { error, result, response } = data;
+        const { error, result } = data;
         if (result.success) {
           resolve(buildOGMessage(result));
         } else {

@@ -6,7 +6,7 @@ const genRandomHex = (size) => {
 };
 
 const messageContainsUrl = async (msg, personId, chatId) => {
-  const re = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_\+.~#?&\/\/=]*)/g;
+  const re = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()!@:%_+.~#?&//=]*)/g;
 
   Array.from(msg.matchAll(re)).map((m) => {
     if (m) {
