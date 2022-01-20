@@ -26,6 +26,7 @@
     "express": "^4.17.1",
     "lodash": "^4.17.21",
     "mongoose": "^6.0.7",
+    "open-graph-scraper": "^4.11.0",
     "pino": "^6.13.2",
     "pino-http": "^5.7.0"
   }

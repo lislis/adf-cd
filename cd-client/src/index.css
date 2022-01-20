@@ -101,6 +101,12 @@
   #adf-cd button.is-rot-half {
     transform: rotate(45deg);
   }
+
+  #adf-cd iframe {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+  }
 }
 
 @layer components {
@@ -213,6 +219,7 @@
     //top: 5px;
     box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13)
   }
+
   #adf-cd .bubble:after {
     content: "";
     display: inline-block;
@@ -222,6 +229,11 @@
     bottom: .5em;
     transform: rotate(45deg);
     z-index: 1;
+  }
+
+  #adf-cd .bubble img {
+    width: 100%;
+    height: auto;
   }
   #adf-cd .msg-list ul {
     padding: 0 var(--padding)
@@ -360,6 +372,13 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+
+  #adf-cd .twitter-tweet,
+  #adf-cd .tiktok-embed {
+    border-left: 6px solid var(--white);
+    padding-left: 1em;
+    margin-left: 0.3em;
   }
 }
 

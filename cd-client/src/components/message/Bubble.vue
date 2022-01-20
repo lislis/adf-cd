@@ -1,9 +1,9 @@
 <template>
-<div class="d-flex ai-end" :class="{'fd-rreverse': msg.isOwnMessage}">
+<div class="d-flex ai-end" :class="{'fd-rreverse': person.isOwnMessage}">
   <Avatar :name="person.name" v-if="!isTwoPerson" size="35" inline="true" />
   <div class="bubble">
-    <div v-if="!msg.isOwnMessage && !isTwoPerson" class="small">{{ person.name }}</div>
-    <div class="msg-content my-02">{{ msg.message }}</div>
+    <div v-if="!person.isOwnMessage && !isTwoPerson" class="small">{{ person.name }}</div>
+    <div class="msg-content my-02" v-html="msg.message"></div>
     <div class="date small">
       <time :datetime="msg.created_date">{{ createdAt }}</time></div>
   </div>
